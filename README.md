@@ -18,3 +18,13 @@ This repository contains Infrastructure as Code (IaC) written in OpenTofu to pro
 ├── variables.tf         # Parameterized inputs and naming conventions
 ├── .gitignore           # Ignores sensitive state files and provider binaries
 └── .terraform.lock.hcl  # Deterministic provider dependency lock
+
+Installation :  we have to register Microsoft's services.
+
+```bash
+ az provider register --namespace Microsoft.Web 
+az provider register --namespace Microsoft.DBforPostgreSQL
+az provider register --namespace Microsoft.Storage
+az provider register --namespace Microsoft.ManagedIdentity
+```
+

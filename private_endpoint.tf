@@ -4,11 +4,11 @@ resource "azurerm_private_dns_zone" "dns_zone" {
   name                = "privatelink.vaultcore.azure.net"
   resource_group_name = azurerm_resource_group.rg.name
 }
-
 resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
-  name                = "vnet-dns-link"
-  private_dns_zone_id = azurerm_private_dns_zone.dns_zone.id
-  virtual_network_id  = azurerm_virtual_network.vnet.id
+  name                 = "vnet-dns-link"
+  private_dns_zone_id  = azurerm_private_dns_zone.dns_zone.id
+  virtual_network_id   = azurerm_virtual_network.vnet.id
+  registration_enabled = false
 }
 
 resource "azurerm_private_endpoint" "kv_pe" {
@@ -29,3 +29,4 @@ resource "azurerm_private_endpoint" "kv_pe" {
     private_dns_zone_ids = [azurerm_private_dns_zone.dns_zone.id]
   }
 }
+
